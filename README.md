@@ -476,3 +476,107 @@ footer {
     <script src="script.js"></script>
 </body>
 </html>
+// ===== DOM Elements =====
+const productGrid = document.querySelector('.product-grid');
+const cartSection = document.querySelector('.cart');
+const cartItemsEl = document.querySelector('.cart-items');
+const cartCountEl = document.getElementById('cart-count');
+const totalPriceEl = document.getElementById('total-price');
+const checkoutBtn = document.querySelector('.checkout-btn');
+
+// ===== Sample Product Data (Replace with your actual products) =====
+const products = [
+    { id: 1, name: 'Cool T-Shirt', price: 499, image: 'product1.jpg' },
+    { id: 2, name: 'Stylish Jeans', price: 1299, image: 'product2.jpg' },
+    { id: 3, name: 'Trendy Sneakers', price: 1999, image: 'product3.jpg' },
+    { id: 4, name: 'Classic Watch', price: 1599, image: 'product4.jpg' }
+];
+
+// ===== Cart State =====
+let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+// ===== Render Products =====
+function renderProducts() {
+    productGrid.querySelector('.products').innerHTML = products.map(product => `
+        <div class="product" data-id="${product.id}">
+            <img src="${product.image}" alt="${product.name}">
+            <h3>${product.name}</h3>
+            <p class="price">₹${product.price}</p>
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+    `).join('');
+}
+
+// ===== Render Cart Items =====
+function renderCartItems() {
+    if (cart.length === 0) {
+        cartItemsEl.innerHTML = '<p>Your cart is empty.</p>';
+        cartSection.style.display = 'none';
+    } else {
+        cartItemsEl.innerHTML = cart.map(item => `
+            <div class="cart-item" data-id="${item.id}">
+                <img src="${item.image}" alt="${item.name}">
+                <div>
+                    <h4>${item.name}</h4>
+                    <p>₹${item.price} x ${item.quantity}</p>
+                </div>
+                <button class="remove-item">Remove</button>
+            </div>
+        `).join('');
+        cartSection.style.display = 'block';
+    }
+    updateCartTotal();
+}
+
+// ===== Update Cart Total =====
+function updateCartTotal() {
+    const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+    totalPriceEl.textContent = total;
+    cartCountEl.textContent = cart.reduce((sum, item) => sum + item.quantity, 0);
+    localStorage.setItem('cart', JSON.stringify(cart));
+}
+
+// ===== Add to Cart =====
+function addToCart(productId) {
+    const product = products.find(p => p.id === productId);
+    const cartItem = cart.find(item => item.id === productId);
+
+    if (cartItem) {
+        cartItem.quantity++;
+    } else {
+        cart.push({ ...product, quantity: 1 });
+    }
+
+    renderCartItems();
+}
+
+// ===== Remove from Cart =====
+function removeFromCart(productId) {
+    cart = cart.filter(item => item.id !== productId);
+    renderCartItems();
+}
+
+// ===== Event Listeners =====
+productGrid.addEventListener('click', (e) => {
+    if (e.target.classList.contains('add-to-cart')) {
+        const productId = parseInt(e.target.closest('.product').dataset.id);
+        addToCart(productId);
+    }
+});
+
+cartItemsEl.addEventListener('click', (e) => {
+    if (e.target.classList.contains('remove-item')) {
+        const productId = parseInt(e.target.closest('.cart-item').dataset.id);
+        removeFromCart(productId);
+    }
+});
+
+checkoutBtn.addEventListener('click', () => {
+    alert(`Order placed! Total: ₹${totalPriceEl.textContent}`);
+    cart = [];
+    renderCartItems();
+});
+
+// ===== Initialize =====
+renderProducts();
+renderCartItems();
