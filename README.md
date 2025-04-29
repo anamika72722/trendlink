@@ -238,7 +238,40 @@
   <script src="script.js"></script>
 </body>
 </html>
-    
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cart - My Online Store</title>
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+  <header>
+    <h1>My Online Store</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="cart.html">Cart</a>
+    </nav>
+  </header>
+
+  <main>
+    <section id="cart-items">
+      <h2>Your Cart</h2>
+      <p>No items in cart.</p>
+      <!-- JavaScript will load cart items here -->
+    </section>
+
+    <section id="checkout">
+      <button>Proceed to Checkout</button>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 My Store. All rights reserved.</p>
+  </footer>
+</body>
+</html>   
 
 
     
