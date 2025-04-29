@@ -183,3 +183,77 @@
 </body>
 </html>
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TrendLink - Shop Fashion & Style</title>
+    <meta name="description" content="Buy trendy clothes, accessories, and more at TrendLink!">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header with Navigation -->
+    <header>
+        <div class="logo">TrendLink</div>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#products">Shop</a></li>
+                <li><a href="#cart">Cart (<span id="cart-count">0</span>)</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Banner -->
+    <section class="hero">
+        <h1>Welcome to TrendLink!</h1>
+        <p>Your one-stop shop for trendy fashion.</p>
+        <a href="#products" class="btn">Shop Now</a>
+    </section>
+
+    <!-- Product Grid -->
+    <section id="products" class="product-grid">
+        <h2>Featured Products</h2>
+        <div class="products">
+            <!-- Product 1 -->
+            <div class="product">
+                <img src="product1.jpg" alt="Trendy T-Shirt">
+                <h3>Cool T-Shirt</h3>
+                <p class="price">₹499</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+            
+            <!-- Product 2 -->
+            <div class="product">
+                <img src="product2.jpg" alt="Stylish Jeans">
+                <h3>Stylish Jeans</h3>
+                <p class="price">₹1299</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+            
+            <!-- Add more products here -->
+        </div>
+    </section>
+
+    <!-- Shopping Cart (Hidden by Default) -->
+    <section id="cart" class="cart">
+        <h2>Your Cart</h2>
+        <div class="cart-items">
+            <!-- Cart items will be added dynamically via JavaScript -->
+        </div>
+        <div class="cart-total">
+            <p>Total: ₹<span id="total-price">0</span></p>
+            <button class="checkout-btn">Proceed to Checkout</button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 TrendLink. All rights reserved.</p>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
