@@ -205,6 +205,7 @@
         </nav>
     </header>
 
+
     <!-- Hero Banner -->
     <section class="hero">
         <h1>Welcome to TrendLink!</h1>
