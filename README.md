@@ -272,6 +272,36 @@
   </footer>
 </body>
 </html>   
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Product Details</title>
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+  <header>
+    <h1>My Online Store</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="cart.html">Cart</a>
+    </nav>
+  </header>
 
+  <main>
+    <section id="product-detail">
+      <h2>Product Name</h2>
+      <p>Price: ₹999</p>
+      <p>Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      <button>Add to Cart</button>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 My Store. All rights reserved.</p>
+  </footer>
+</body>
+</html>
 
     
