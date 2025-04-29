@@ -1,0 +1,2 @@
+# trendlink
+about shopping
