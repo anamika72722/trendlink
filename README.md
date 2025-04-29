@@ -410,3 +410,82 @@
   </footer>
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin Panel - My Store</title>
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+  <header>
+    <h1>Admin Dashboard</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="admin.html">Admin Panel</a>
+    </nav>
+  </header>
+
+  <main>
+    <section>
+      <h2>Add New Product</h2>
+      <form id="add-product-form">
+        <label>Product Name:</label><br>
+        <input type="text" id="product-name" required><br><br>
+        <label>Price:</label><br>
+        <input type="number" id="product-price" required><br><br>
+        <label>Description:</label><br>
+        <textarea id="product-description" required></textarea><br><br>
+        <button type="submit">Add Product</button>
+      </form>
+    </section>
+
+    <section>
+      <h2>All Products</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Price (₹)</th>
+            <th>Description</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="product-table">
+          <!-- Products will appear here -->
+        </tbody>
+      </table>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 My Store. All rights reserved.</p>
+  </footer>
+
+  <script>
+    const form = document.getElementById("add-product-form");
+    const table = document.getElementById("product-table");
+    let adminProducts = [];
+
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const name = document.getElementById("product-name").value;
+      const price = document.getElementById("product-price").value;
+      const desc = document.getElementById("product-description").value;
+
+      const newProduct = { name, price, desc };
+      adminProducts.push(newProduct);
+      renderTable();
+      form.reset();
+    });
+
+    function renderTable() {
+      table.innerHTML = "";
+      adminProducts.forEach((product, index) => {
+        table.innerHTML += `
+          <tr>
+            <td>${product.name}</td>
+            <td>${product.price}</td>
+            <td>${product.desc}</td>
+            <
