@@ -1,5 +1,5 @@
 ![Screenshot 2025-04-29 130502](https://github.com/user-attachments/assets/26718e51-becc-4fe1-9af0-3baefe2f66b2)
-![download (2)](https://github.com/user-attachments/assets/2de1a573-23ac-47ed-981e-c595cab91431)
+
 # trendlink
 <!DOCTYPE html>
 <html lang="en">
