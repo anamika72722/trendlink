@@ -530,3 +530,54 @@
   <script src="script.js"></script>
 </body>
 </html>
+const products = [
+  { id: 1, name: "T-Shirt", price: 499, category: "clothing" },
+  { id: 2, name: "Sneakers", price: 1999, category: "shoes" },
+  { id: 3, name: "Jeans", price: 1299, category: "clothing" },
+  { id: 4, name: "Cap", price: 299, category: "accessories" },
+];
+
+let cart = [];
+
+function renderProducts(filtered = products) {
+  const container = document.getElementById("product-list");
+  container.innerHTML = "";
+  filtered.forEach(product => {
+    container.innerHTML += `
+      <div class="product">
+        <h3>${product.name}</h3>
+        <p>₹${product.price}</p>
+        <p>Category: ${product.category}</p>
+        <button onclick="addToCart(${product.id})">Add to Cart</button>
+      </div>
+    `;
+  });
+}
+
+function addToCart(productId) {
+  cart.push(productId);
+  document.getElementById("cart-count").innerText = cart.length;
+}
+
+document.getElementById("search-input").addEventListener("input", () => {
+  filterAndSearch();
+});
+
+document.getElementById("category-filter").addEventListener("change", () => {
+  filterAndSearch();
+});
+
+function filterAndSearch() {
+  const searchText = document.getElementById("search-input").value.toLowerCase();
+  const category = document.getElementById("category-filter").value;
+
+  const filtered = products.filter(product => {
+    const matchesSearch = product.name.toLowerCase().includes(searchText);
+    const matchesCategory = category === "all" || product.category === category;
+    return matchesSearch && matchesCategory;
+  });
+
+  renderProducts(filtered);
+}
+
+renderProducts();
