@@ -685,3 +685,53 @@ renderProducts();
     }
   </style>
 </head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>TrendLink - Add Product</title>
+  <style>
+    body { font-family: Arial; padding: 20px; background: #f4f4f4; }
+    form { background: white; padding: 20px; max-width: 400px; margin: auto; border-radius: 10px; }
+    input, textarea { width: 100%; margin-bottom: 10px; padding: 8px; }
+    button { background: #000; color: white; padding: 10px; border: none; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <h2>Add Product to TrendLink</h2>
+  <form id="productForm">
+    <input type="text" name="name" placeholder="Product Name" required />
+    <input type="number" name="price" placeholder="Price (₹)" required />
+    <textarea name="description" placeholder="Product Description" required></textarea>
+    <input type="text" name="image" placeholder="Image URL" required />
+    <button type="submit">Add Product</button>
+  </form>
+
+  <script>
+    document.getElementById('productForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const form = e.target;
+      const data = {
+        name: form.name.value,
+        price: form.price.value,
+        description: form.description.value,
+        image: form.image.value
+      };
+
+      const res = await fetch('/api/products', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
+
+      if (res.ok) {
+        alert('Product added successfully!');
+        form.reset();
+      } else {
+        alert('Failed to add product.');
+      }
+    });
+  </script>
+</body>
+</html>
